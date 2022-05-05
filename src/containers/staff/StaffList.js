@@ -65,6 +65,10 @@ const StaffList = (props) => {
       overTime: state.overTime,
       image: state.image,
     };
+    setState({
+      ...state,
+      modalOpen: !state.modalOpen,
+    });
     props.onAdd(newStaff);
   };
 
@@ -129,7 +133,7 @@ const StaffList = (props) => {
     setState({ ...state, nameF: nameS });
   };
 
-  const listNhanvien = state.staffs
+  const listNhanvien = props.staffs
     .filter((val) => {
       if (state.nameF === "") return val;
       else if (val.name.toLowerCase().includes(state.nameF.toLowerCase()))
