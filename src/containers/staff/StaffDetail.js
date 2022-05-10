@@ -8,7 +8,7 @@ import dateFormat from "dateformat";
 const StaffDetail = ({ staffs }) => {
   const { id } = useParams();
 
-  const staff = staffs.find((item) => item.id == id);
+  const staff = staffs.find((item) => item.id === parseInt(id));
 
   const RenderStaff = (staff) => {
     return (
