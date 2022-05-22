@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchStaffs } from "../../Redux/ActionCreator";
-import { fetchDepartments } from "../../Redux/ActionCreator";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Breadcrumb, BreadcrumbItem, Jumbotron } from "reactstrap";
@@ -22,7 +21,7 @@ function ListDepartment() {
         <Jumbotron
           key={staff.id}
           className="col-lg-2 col-md-4 col-sm-12"
-          style={{ justifyContent: "center", background: "#e9ecef" }}
+          style={{ background: "#e9ecef" }}
         >
           <Link to={"/staffs/" + staff.id}>
             <img width="100%" src={staff.image} alt={staff.name} />

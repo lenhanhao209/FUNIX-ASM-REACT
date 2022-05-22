@@ -36,7 +36,7 @@ const Salarys = () => {
             fadeProps={{ exitFade: "0", enterFade: "1" }}
             transformProps={{ exitTransform: "scale(.7) translateY(50%)" }}
           >
-            <Card>
+            <Card style={{ background: "#e9ecef" }}>
               <CardTitle className="p-3 bg-white rounded m-2">
                 {nv.name}
               </CardTitle>
