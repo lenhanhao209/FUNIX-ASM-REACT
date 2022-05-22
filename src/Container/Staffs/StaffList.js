@@ -7,7 +7,7 @@ import { fetchStaffs, fetchDepartments } from "../../Redux/ActionCreator";
 import { Link } from "react-router-dom";
 import { Loading } from "../../Components/Loading";
 import { postData } from "../../Redux/ActionCreator";
-
+import { FadeTransform } from "react-animation-components";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -71,6 +71,7 @@ const StaffList = () => {
         return val;
       return 0;
     })
+
     .map((nv) => {
       return (
         <div
@@ -78,10 +79,16 @@ const StaffList = () => {
           className="col-lg-2 col-md-4 col-sm-12"
           style={{ justifyContent: "center" }}
         >
-          <Link to={"/staffs/" + nv.id}>
-            <img src={nv.image} alt={nv.name} />
-            <p>{nv.name}</p>
-          </Link>
+          <FadeTransform
+            in
+            fadeProps={{ exitFade: "0", enterFade: "1" }}
+            transformProps={{ exitTransform: "scale(.7) translateY(50%)" }}
+          >
+            <Link to={"/staffs/" + nv.id}>
+              <img src={nv.image} alt={nv.name} />
+              <p>{nv.name}</p>
+            </Link>
+          </FadeTransform>
         </div>
       );
     });
@@ -94,10 +101,9 @@ const StaffList = () => {
               <i class="fa fa-user" aria-hidden="true"></i> Nhân viên
             </h3>
           </BreadcrumbItem>
-          <div className="col-12 col-md-3" style={{ paddingLeft: 0 }}>
+          <div className="col-12 col-md-4" style={{ paddingLeft: 100 }}>
             <Button
               className="m-2"
-              style={{ marginBottom: "8px" }}
               color="danger"
               id="add-btn"
               onClick={toggleModal}
@@ -311,7 +317,7 @@ const StaffList = () => {
           </div>
           <div className="col-12 col-md-6 mt-3">
             <form onSubmit={findStaff} className="form-group row">
-              <div className="col-8 col-md-8">
+              <div className="col-8 col-md-7">
                 <Input
                   type="text"
                   className="form-control"

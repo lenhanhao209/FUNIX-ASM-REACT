@@ -57,7 +57,7 @@ const StaffDetail = () => {
 
   //----------Delete data---------------//
   const delData = (value) => {
-    if (window.confirm("Are you sure to delete this staff")) {
+    if (window.confirm("Are you sure to delete this staff?")) {
       dispatch(deleteData(id));
       navigate(-1);
     }

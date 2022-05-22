@@ -14,12 +14,17 @@ const Department = () => {
   }, [dispatch]);
   const department = departments.departments.map((depart) => {
     return (
-      <div key={depart.id} className="col-lg-3 col-md-5 col-sm-12 mb-3 m-2">
-        <Jumbotron>
+      <div
+        key={depart.id}
+        className="col-lg-3 col-md-5 col-sm-12 mb-3 m-1 text-center"
+      >
+        <Jumbotron style={{ background: "#e9ecef" }} className="text-center">
           <Link to={`/departments/${depart.id}`}>
             <h2>{depart.name}</h2>
           </Link>
-          <p> Số lượng nhân viên: {depart.numberOfStaff}</p>
+          <p style={{ color: "black" }}>
+            Số lượng nhân viên: {depart.numberOfStaff}
+          </p>
         </Jumbotron>
       </div>
     );
@@ -28,7 +33,9 @@ const Department = () => {
     <Loading />
   ) : (
     <div className="container">
-      <div className="row">{department}</div>
+      <div className="row" style={{ justifyContent: "center" }}>
+        {department}
+      </div>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 import React, { useState } from "react";
 import {
   Navbar,
@@ -26,17 +27,18 @@ const Header = () => {
           <Collapse isOpen={isNavOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <Link to="/staffs">
-                  <h1 className="fa fa-users m-2"></h1>Nhân viên
+                <Link to="/staffs" style={{ color: "black" }}>
+                  <h1 className="fa fa-users m-2"></h1>
+                  Nhân viên
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/departments">
+                <Link to="/departments" style={{ color: "black" }}>
                   <p className="fa fa-address-card m-2"></p>Phòng ban
                 </Link>
               </NavItem>
               <NavItem>
-                <Link to="/salarys">
+                <Link to="/salarys" style={{ color: "black" }}>
                   <p className="fa fa-money m-2"></p>Bảng lương
                 </Link>
               </NavItem>
