@@ -15,12 +15,12 @@ const Department = () => {
   const department = departments.departments.map((depart) => {
     return (
       <div key={depart.id} className="col-lg-3 col-md-5 col-sm-12 mb-3 m-2">
-        <Link to={"/departments/" + depart.id}>
-          <Jumbotron>
+        <Jumbotron>
+          <Link to={`/departments/${depart.id}`}>
             <h2>{depart.name}</h2>
-            <p> Số lượng nhân viên: {depart.numberOfStaff}</p>
-          </Jumbotron>
-        </Link>
+          </Link>
+          <p> Số lượng nhân viên: {depart.numberOfStaff}</p>
+        </Jumbotron>
       </div>
     );
   });
