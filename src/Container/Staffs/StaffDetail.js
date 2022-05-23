@@ -106,6 +106,7 @@ const StaffDetail = () => {
                   id="add-btn"
                   onClick={toggleModal}
                 >
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   Edit
                 </button>
                 <button
@@ -114,6 +115,7 @@ const StaffDetail = () => {
                   id="add-btn"
                   onClick={delData}
                 >
+                  <i class="fa fa-times" aria-hidden="true"></i>
                   Delete
                 </button>
                 <Modal isOpen={isOpen} toggle={toggleModal}>

@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-pascal-case */
-/* eslint-disable no-unreachable */
+
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchStaffs, fetchDepartments } from "../../Redux/ActionCreator";
@@ -327,6 +326,7 @@ const StaffList = () => {
               </div>
               <div className="col-4 col-md-4">
                 <button className="btn btn-success" type="submit">
+                  <i class="fa fa-search-plus" aria-hidden="true"></i>
                   Tìm kiếm
                 </button>
               </div>
