@@ -1,17 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Modal,
-  Col,
-  Form,
-  Input,
-  ModalHeader,
-  ModalBody,
-  Row,
-  Label,
-  FormFeedback,
-} from "reactstrap";
+import { Button, Modal, Col, Form, Input, ModalHeader, ModalBody, Row, Label, FormFeedback } from "reactstrap";
 
 const StaffList = (props) => {
   const [state, setState] = useState({
@@ -20,7 +9,7 @@ const StaffList = (props) => {
     doB: "",
     salaryScale: 1,
     startDate: "",
-    department: "Sale",
+    department: "",
     annualLeave: 0,
     overTime: 0,
     salary: 30000,
@@ -72,14 +61,7 @@ const StaffList = (props) => {
     props.onAdd(newStaff);
   };
 
-  const validate = (
-    name,
-    salaryScale,
-    doB,
-    startDate,
-    annualLeave,
-    overTime
-  ) => {
+  const validate = (name, salaryScale, doB, startDate, annualLeave, overTime) => {
     const errors = {
       name: "",
       doB: "",
@@ -88,30 +70,17 @@ const StaffList = (props) => {
       annualLeave: "",
       overTime: "",
     };
-    if (state.touched.name && name.length < 2)
-      errors.name = "Yêu cầu nhiều hơn 2 ký tự";
-    else if (state.touched.name && name.length > 20)
-      errors.name = "Yêu cầu ít hơn 20 ký tự";
-    if (state.touched.salaryScale && salaryScale < 1)
-      errors.salaryScale = "Yêu cầu nhập";
-    if (state.touched.annualLeave && annualLeave < 1)
-      errors.annualLeave = "Yêu cầu nhập";
-    if (state.touched.overTime && overTime < 1)
-      errors.overTime = "Yêu cầu nhập";
+    if (state.touched.name && name.length < 2) errors.name = "Yêu cầu nhiều hơn 2 ký tự";
+    else if (state.touched.name && name.length > 20) errors.name = "Yêu cầu ít hơn 20 ký tự";
+    if (state.touched.salaryScale && salaryScale < 1) errors.salaryScale = "Yêu cầu nhập";
+    if (state.touched.annualLeave && annualLeave < 1) errors.annualLeave = "Yêu cầu nhập";
+    if (state.touched.overTime && overTime < 1) errors.overTime = "Yêu cầu nhập";
     if (state.touched.doB && doB < 1) errors.doB = "Yêu cầu nhập";
-    if (state.touched.startDate && startDate < 1)
-      errors.startDate = "Yêu cầu nhập";
+    if (state.touched.startDate && startDate < 1) errors.startDate = "Yêu cầu nhập";
     return errors;
   };
 
-  const errors = validate(
-    state.name,
-    state.salaryScale,
-    state.doB,
-    state.startDate,
-    state.annualLeave,
-    state.overTime
-  );
+  const errors = validate(state.name, state.salaryScale, state.doB, state.startDate, state.annualLeave, state.overTime);
   const toggleModal = () => {
     setState({
       ...state,
@@ -136,17 +105,12 @@ const StaffList = (props) => {
   const listNhanvien = props.staffs
     .filter((val) => {
       if (state.nameF === "") return val;
-      else if (val.name.toLowerCase().includes(state.nameF.toLowerCase()))
-        return val;
+      else if (val.name.toLowerCase().includes(state.nameF.toLowerCase())) return val;
       return 0;
     })
     .map((val) => {
       return (
-        <div
-          key={val.id}
-          className="col-lg-2 col-md-4 col-sm-12"
-          style={{ justifyContent: "center" }}
-        >
+        <div key={val.id} className="col-lg-2 col-md-4 col-sm-12" style={{ justifyContent: "center" }}>
           <Link to={"/nhanvien/" + val.id}>
             <div onClick={() => props.onStaffSelect(val.id)}></div>
             <img src={val.image} alt={val.name} />
@@ -173,12 +137,7 @@ const StaffList = (props) => {
         <div className="col-12 col-md-6 mt-3">
           <form onSubmit={timNhanVien} className="form-group row">
             <div className="col-8 col-md-8">
-              <Input
-                type="text"
-                className="form-control"
-                name="nameS"
-                placeholder="Tìm kiếm nhân viên..."
-              />
+              <Input type="text" className="form-control" name="nameS" placeholder="Tìm kiếm nhân viên..." />
             </div>
             <div className="col-4 col-md-4">
               <button className="btn btn-success" type="submit">
@@ -209,6 +168,7 @@ const StaffList = (props) => {
                   invalid={errors.name !== ""}
                   onBlur={() => handleBlur("name")}
                   onChange={handleInputChange}
+                  required
                 />
                 <FormFeedback>{errors.name}</FormFeedback>
               </Col>
@@ -228,6 +188,7 @@ const StaffList = (props) => {
                   invalid={errors.doB !== ""}
                   onBlur={() => handleBlur("doB")}
                   onChange={handleInputChange}
+                  required
                 />
                 <FormFeedback>{errors.doB}</FormFeedback>
               </Col>
@@ -247,6 +208,7 @@ const StaffList = (props) => {
                   invalid={errors.startDate !== ""}
                   onBlur={() => handleBlur("startDate")}
                   onChange={handleInputChange}
+                  required
                 />
                 <FormFeedback>{errors.startDate}</FormFeedback>
               </Col>
@@ -288,6 +250,7 @@ const StaffList = (props) => {
                   invalid={errors.salaryScale !== ""}
                   onBlur={() => handleBlur("salaryScale")}
                   onChange={handleInputChange}
+                  required
                 />
                 <FormFeedback>{errors.salaryScale}</FormFeedback>
               </Col>
