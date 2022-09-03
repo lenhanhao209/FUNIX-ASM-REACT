@@ -1,22 +1,14 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Modal,
-  Col,
-  Input,
-  ModalHeader,
-  ModalBody,
-  Row,
-  Label,
-  FormFeedback,
-} from "reactstrap";
+import { Button, Modal, Col, Input, ModalHeader, ModalBody, Row, Label } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { DEPARTMENTS } from "../../shared/constants";
 
 const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !val && val.length <= len;
+const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
 const isNumber = (val) => !isNaN(Number(val));
 const minNum = (val) => !required(val) || !isNumber(val) || val >= 1;
@@ -49,20 +41,20 @@ const StaffList = (props) => {
       image: "/assets/images/alberto.png",
     };
     if (
-      !value.name ||
-      !value.doB ||
-      !value.startDate ||
-      !value.department ||
-      !value.salaryScale ||
-      !value.overTime ||
-      !value.image
+      value.name &&
+      value.doB &&
+      value.startDate &&
+      value.department &&
+      value.salaryScale &&
+      value.overTime &&
+      value.image
     )
       props.onAdd(newStaff);
 
-    setState({
-      ...state,
-      modalOpen: !state.modalOpen,
-    });
+    // setState({
+    //   ...state,
+    //   modalOpen: !state.modalOpen,
+    // });
   };
 
   const toggleModal = () => {
@@ -70,10 +62,6 @@ const StaffList = (props) => {
       ...state,
       modalOpen: !state.modalOpen,
     });
-  };
-
-  const handleInputChange = (event) => {
-    setState({ [event.target.name]: event.target.value });
   };
 
   const timNhanVien = (event) => {
@@ -86,17 +74,12 @@ const StaffList = (props) => {
   const listNhanvien = props.staffs
     .filter((val) => {
       if (state.nameF === "") return val;
-      else if (val.name.toLowerCase().includes(state.nameF.toLowerCase()))
-        return val;
+      else if (val.name.toLowerCase().includes(state.nameF.toLowerCase())) return val;
       return 0;
     })
     .map((val) => {
       return (
-        <div
-          key={val.id}
-          className="col-lg-2 col-md-4 col-sm-12"
-          style={{ justifyContent: "center" }}
-        >
+        <div key={val.id} className="col-lg-2 col-md-4 col-sm-12" style={{ justifyContent: "center" }}>
           <Link to={"/nhanvien/" + val.id}>
             <div onClick={() => props.onStaffSelect(val.id)}></div>
             <img src={val.image} alt={val.name} />
@@ -123,12 +106,7 @@ const StaffList = (props) => {
         <div className="col-12 col-md-6 mt-3">
           <form onSubmit={timNhanVien} className="form-group row">
             <div className="col-8 col-md-8">
-              <Input
-                type="text"
-                className="form-control"
-                name="nameS"
-                placeholder="Tìm kiếm nhân viên..."
-              />
+              <Input type="text" className="form-control" name="nameS" placeholder="Tìm kiếm nhân viên..." />
             </div>
             <div className="col-4 col-md-4">
               <button className="btn btn-success" type="submit">
@@ -154,7 +132,7 @@ const StaffList = (props) => {
                   className="form-control"
                   id="name"
                   name="name"
-                  vallidate={{
+                  validators={{
                     required,
                     minLength: minLength(3),
                     maxLength: maxLength(15),
@@ -162,7 +140,7 @@ const StaffList = (props) => {
                 />
                 <Errors
                   model=".name"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -183,13 +161,13 @@ const StaffList = (props) => {
                   className="form-control"
                   id="doB"
                   name="doB"
-                  vallidate={{
+                  validators={{
                     required,
                   }}
                 />
                 <Errors
                   model=".doB"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -208,13 +186,13 @@ const StaffList = (props) => {
                   className="form-control"
                   id="startDate"
                   name="startDate"
-                  vallidate={{
+                  validators={{
                     required,
                   }}
                 />
                 <Errors
                   model=".startDate"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
@@ -252,7 +230,7 @@ const StaffList = (props) => {
                   className="form-control"
                   id="salaryScale"
                   name="salaryScale"
-                  vallidate={{
+                  validators={{
                     required,
                     isNumber,
                     minNum,
@@ -261,7 +239,7 @@ const StaffList = (props) => {
                 />
                 <Errors
                   model=".salaryScale"
-                  className="form-danger"
+                  className="text-danger"
                   show="touched"
                   messages={{
                     required: "Yêu cầu",
