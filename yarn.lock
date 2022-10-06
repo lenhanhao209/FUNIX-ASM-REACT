@@ -4365,6 +4365,11 @@
     "combined-stream" "^1.0.8"
     "mime-types" "^2.1.12"
 
+"format-decimal@^0.1.0":
+  "integrity" "sha512-Q+ybM0xQf6oR6zstK8p0fgaCKLItsjIFVXMJSudwUuM/vKxw3klRbOpacAunsHTGEcXgDuJabKjiA1+RQG2uvQ=="
+  "resolved" "https://registry.npmjs.org/format-decimal/-/format-decimal-0.1.0.tgz"
+  "version" "0.1.0"
+
 "forwarded@0.2.0":
   "integrity" "sha512-buRG0fpBtRHSTCOASe6hD258tEubFoRLb4ZNA6NxMVHNw2gOcwHo9wyablzMzOA5z9xA9L1KNjk/Nt6MT9aYow=="
   "resolved" "https://registry.npmjs.org/forwarded/-/forwarded-0.2.0.tgz"

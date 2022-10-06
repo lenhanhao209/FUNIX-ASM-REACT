@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { STAFFS } from "../shared/constants";
+const formatDecimal = require("format-decimal");
 
 const Salary = () => {
   const staffs = STAFFS;
@@ -30,7 +31,12 @@ const Salary = () => {
             <CardText>Hệ số lương:{item.salaryScale}</CardText>
             <CardText>Số giờ làm thêm:{item.overTime}</CardText>
             <CardText className="bg-light p-2 shadow">
-              Lương:{salaryEmployee}
+              Lương:{" "}
+              {formatDecimal(+salaryEmployee, {
+                decimal: ".",
+                thousands: ",",
+                precision: 0,
+              })}
             </CardText>
           </CardBody>
         </Card>
