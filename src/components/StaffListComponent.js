@@ -5,7 +5,7 @@ import { STAFFS } from "../shared/constants";
 
 //Declaring StaffList
 const StaffList = () => {
-  const [staffs, setStaffs] = useState(STAFFS);
+  const staffs = STAFFS;
   const [selectedStaff, setSelectedStaff] = useState(null);
   const [columDefault, setColumDefault] = useState(
     "col-12 col-md-6 col-lg-4 mt-3"
