@@ -4,12 +4,12 @@ import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import dateFormat from "dateformat";
+import { STAFFS } from "../shared/constants";
 
-const StaffDetail = ({ staffs }) => {
+const StaffDetail = () => {
+  const staffs = STAFFS;
   const { id } = useParams();
-
-  const staff = staffs.find((item) => item.id == id);
-
+  const staff = staffs.find((item) => item.id === parseInt(id));
   const RenderStaff = (staff) => {
     return (
       <div className="container">
@@ -37,7 +37,6 @@ const StaffDetail = ({ staffs }) => {
                 <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
                 <CardText>Số ngày đã làm thêm: {staff.overTime}</CardText>
               </CardBody>
-
               <hr />
             </div>
           </div>

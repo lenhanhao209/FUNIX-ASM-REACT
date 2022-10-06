@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { STAFFS } from "../shared/constants";
 
-const StaffList = (props) => {
-  const listNhanvien = props.staffs.map((nv) => {
+const StaffList = () => {
+  const staffs = STAFFS;
+  const listNhanvien = staffs.map((nv) => {
     return (
       <div
         key={nv.id}
@@ -10,7 +12,6 @@ const StaffList = (props) => {
         style={{ justifyContent: "center" }}
       >
         <Link to={"/nhanvien/" + nv.id}>
-          <div onClick={() => props.onStaffSelect(nv.id)}></div>
           <img src={nv.image} alt={nv.name} />
           <p>{nv.name}</p>
         </Link>

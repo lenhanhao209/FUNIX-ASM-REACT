@@ -1,8 +1,10 @@
 import React from "react";
+import { DEPARTMENTS } from "../shared/constants";
 import { Card, CardText, CardTitle, CardBody } from "reactstrap";
 
-const Department = (props) => {
-  const department = props.departments.map((depart) => {
+const Department = () => {
+  const departments = DEPARTMENTS;
+  const department = departments.map((depart) => {
     return (
       <Card key={depart.id} className="col-lg-3 col-md-5 col-sm-12 mb-3 m-2">
         <CardTitle>{depart.name}</CardTitle>
