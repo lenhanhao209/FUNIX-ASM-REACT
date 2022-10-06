@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { STAFFS } from "../shared/constants";
 
-const Salary = (props) => {
+const Salary = () => {
   const staffs = STAFFS;
   const luongCB = 3000000;
   const luongGio = 200000 / 8;
