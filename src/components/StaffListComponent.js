@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Card, CardImg, CardTitle, CardBody, CardText } from "reactstrap";
 import dateFormat from "dateformat";
+import { STAFFS } from "../shared/constants";
 
 //Declaring StaffList
-const StaffList = (props) => {
+const StaffList = () => {
+  const [staffs, setStaffs] = useState(STAFFS);
   const [selectedStaff, setSelectedStaff] = useState(null);
   const [columDefault, setColumDefault] = useState(
     "col-12 col-md-6 col-lg-4 mt-3"
@@ -96,7 +98,7 @@ const StaffList = (props) => {
           justifyContent: "center",
         }}
       >
-        {props.staffs.map((staff) => (
+        {staffs.map((staff) => (
           <Card
             className={columDefault}
             onClick={() => setSelectedStaff(staff)}
