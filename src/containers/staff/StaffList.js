@@ -35,14 +35,7 @@ const StaffList = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = validate(
-      state.name,
-      state.salaryScale,
-      state.doB,
-      state.startDate,
-      state.annualLeave,
-      state.overTime
-    );
+    const errors = validate(state.name, state.salaryScale, state.doB, state.startDate, state.annualLeave, state.overTime);
 
     const newStaff = {
       name: state.name,
@@ -164,7 +157,7 @@ const StaffList = (props) => {
                   id="name"
                   name="name"
                   value={state.name}
-                  valid={errors.name === ""}
+                  // valid={errors.name === ""}
                   invalid={errors.name !== ""}
                   onBlur={() => handleBlur("name")}
                   onChange={handleInputChange}
@@ -184,7 +177,7 @@ const StaffList = (props) => {
                   id="doB"
                   name="doB"
                   value={state.doB}
-                  valid={errors.doB === ""}
+                  // valid={errors.doB === ""}
                   invalid={errors.doB !== ""}
                   onBlur={() => handleBlur("doB")}
                   onChange={handleInputChange}
@@ -204,7 +197,7 @@ const StaffList = (props) => {
                   id="startDate"
                   name="startDate"
                   value={state.startDate}
-                  valid={errors.startDate === ""}
+                  // valid={errors.startDate === ""}
                   invalid={errors.startDate !== ""}
                   onBlur={() => handleBlur("startDate")}
                   onChange={handleInputChange}
@@ -218,13 +211,7 @@ const StaffList = (props) => {
                 Phòng ban
               </Label>
               <Col md={8}>
-                <Input
-                  type="select"
-                  id="department"
-                  name="department"
-                  value={state.department.name}
-                  onChange={handleInputChange}
-                >
+                <Input type="select" id="department" name="department" value={state.department.name} onChange={handleInputChange}>
                   <option>Sale</option>
                   <option>HR</option>
                   <option>Marketing</option>
@@ -246,10 +233,11 @@ const StaffList = (props) => {
                   name="salaryScale"
                   placeholder="1->3"
                   value={state.salaryScale}
-                  valid={errors.salaryScale === ""}
+                  // valid={errors.salaryScale === ""}
                   invalid={errors.salaryScale !== ""}
                   onBlur={() => handleBlur("salaryScale")}
                   onChange={handleInputChange}
+                  default="0"
                   required
                 />
                 <FormFeedback>{errors.salaryScale}</FormFeedback>
@@ -261,15 +249,17 @@ const StaffList = (props) => {
               </Label>
               <Col md={8}>
                 <Input
-                  type="text"
+                  type="number"
                   className="form-control"
                   id="anualLeave"
                   name="annualLeave"
                   value={state.annualLeave}
-                  valid={errors.annualLeave === ""}
+                  // valid={errors.annualLeave === ""}
                   invalid={errors.annualLeave !== ""}
                   onBlur={() => handleBlur("annualLeave")}
                   onChange={handleInputChange}
+                  default="0"
+                  required
                 />
                 <FormFeedback>{errors.annualLeave}</FormFeedback>
               </Col>
@@ -280,15 +270,16 @@ const StaffList = (props) => {
               </Label>
               <Col md={8}>
                 <Input
-                  type="text"
+                  type="number"
                   className="form-control"
                   id="overTime"
                   name="overTime"
                   value={state.overTime}
-                  valid={errors.overTime === ""}
+                  // valid={errors.overTime === ""}
                   invalid={errors.overTime !== ""}
                   onBlur={() => handleBlur("overTime")}
                   onChange={handleInputChange}
+                  required
                 />
                 <FormFeedback>{errors.overTime}</FormFeedback>
               </Col>
